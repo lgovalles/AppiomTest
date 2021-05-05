@@ -28,6 +28,8 @@ class mainPage(mainMenu):
 
     def selectUnit(self, unit):
         self.scrollUp()
+        downcont = 0
+        upcont = 0
         self.UNIT_OPTION = (By.XPATH, f"//android.widget.TextView[contains(@text, '{unit}')]")
         findlement  = True
         while findlement:
@@ -35,7 +37,20 @@ class mainPage(mainMenu):
                 self.find_element(*self.UNIT_OPTION).click()
                 findlement = False
             except:
+                if downcont == 10:
+                    break
                 self.scrollDown()
+                downcont += 1
+
+        while findlement:
+            try:
+                self.find_element(*self.UNIT_OPTION).click()
+                findlement = False
+            except:
+                if upcont == 10:
+                    break
+                self.scrollUp()
+                upcont += 1
 
     def get_valueFrom(self):
         return self.find_element(*self.FROM_VALUE).get_attribute("text")
