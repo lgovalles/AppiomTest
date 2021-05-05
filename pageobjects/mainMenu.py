@@ -28,3 +28,7 @@ class mainMenu(BasePage):
 
     def ClickOnSpeet(self):
         self.find_element(*self.SPEED_OPTION).click()
+
+    def ClickOnMenuOption(self, option):
+        self.MENU_OPTION = (By.XPATH, f"//android.widget.TextView(@text, '{option}')]")
+        self.find_element(*self.MENU_OPTION).click()

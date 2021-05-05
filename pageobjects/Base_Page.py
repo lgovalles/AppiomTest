@@ -32,6 +32,11 @@ class BasePage(object):
         return webdriver.Remote('http://127.0.0.1:4723/wd/hub', self.android_cap)
 
     def scrollDown(self):
-        time.sleep(10)
+        time.sleep(2)
         scrolldown = TouchAction(self.driver)
         scrolldown.press(x=200, y=1568).move_to(x=200, y=557).release().perform()
+
+    def scrollUp(self):
+        time.sleep(2)
+        scrolldown = TouchAction(self.driver)
+        scrolldown.press(x=262, y=237).move_to(x=232, y=893).release().perform()

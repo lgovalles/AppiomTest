@@ -1,3 +1,5 @@
+import time
+
 from behave import given
 from behave import then
 from behave import when
@@ -6,7 +8,7 @@ from pageobjects.DimensionPage import DimenstionPage
 
 mainpage = DimenstionPage()
 
-@given("I am on the Length page")
+@given(u'I am on the Length page')
 def step_impl(context):
     print("given")
     mainpage.ClickOnMainMenu()
@@ -16,8 +18,10 @@ def step_impl(context):
 @when(u'I select the Length "{fromLength}" to convert "{toLength}"')
 def step_impl(context, fromLength, toLength):
     print("when")
+    mainpage.ClickOnFrom()
+    mainpage.selectUnit(fromLength)
     mainpage.ClickOnTo()
-    mainpage.selectUnit()
+    mainpage.selectUnit(toLength)
 
 
 @given("I am on the Area page")
@@ -30,8 +34,10 @@ def step_impl(context):
 @when(u'I select the Area "{fromArea}" to convert "{toArea}"')
 def step_impl(context, fromArea, toArea):
     print("when")
+    mainpage.ClickOnFrom()
+    mainpage.selectUnit(fromArea)
     mainpage.ClickOnTo()
-    mainpage.selectUnit()
+    mainpage.selectUnit(toArea)
 
 
 @given("I am on the volume page")
@@ -44,14 +50,19 @@ def step_impl(context):
 @when(u'I select the volume "{fromVol}" to convert "{toVol}"')
 def step_impl(context, fromVol, toVol):
     print("when")
+    mainpage.ClickOnFrom()
+    mainpage.selectUnit(fromVol)
     mainpage.ClickOnTo()
-    mainpage.selectUnit()
+    mainpage.selectUnit(toVol)
 
 
 @then(u'The initial value should be "{iniVal}"')
 def step_impl(context, iniVal):
     print("then")
+    mainpage.ClickOnClear("C")
+    mainpage.ClickOnNumber(iniVal)
     assert iniVal in mainpage.get_valueFrom()
+    time.sleep(2)
 
 
 @then(u'the concert value should "{resVal}"')
@@ -70,12 +81,16 @@ def step_impl(context):
 @when(u'I select the sped "{fromSpeed}" to convert "{toSpeed}"')
 def step_impl(context, fromSpeed, toSpeed):
     print("when")
+    mainpage.ClickOnFrom()
+    mainpage.selectUnit(fromSpeed)
     mainpage.ClickOnTo()
-    mainpage.selectUnit()
+    mainpage.selectUnit(toSpeed)
 
 
 @then(u'The speed initial value should be "{iniVal}"')
 def step_impl(context, iniVal):
+    mainpage.ClickOnClear("C")
+    mainpage.ClickOnNumber(iniVal)
     assert iniVal in mainpage.get_valueFrom()
 
 

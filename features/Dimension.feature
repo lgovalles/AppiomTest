@@ -1,6 +1,6 @@
 @dimentionFeature
 Feature: Test the Dimension feature
-  This test should verify the functionality of Dimension module
+  This test should verify the functionality of the Dimension module
 
   @LengthTest
     Scenario Outline: Verify the Length page works
@@ -9,9 +9,9 @@ Feature: Test the Dimension feature
       Then The initial value should be "<iniVal>"
         And The concert value should "<resVal>"
       Examples:
-        | fromLength   | toLength    | iniVal | resVal |
-        | ft           | mm          | 1      | 304.8  |
-        | ft           | um          | 1      | 304800 |
+        | fromLength | toLength | iniVal | resVal   |
+        | (ft)       | (mm)     | 10     | 3048     |
+        | (ft)       | (µm)     | 12     | 3657600  |
 
 
     @areaTest
@@ -21,9 +21,9 @@ Feature: Test the Dimension feature
         Then The initial value should be "<iniVal>"
           And The concert value should "<resVal>"
         Examples:
-            | fromArea | toArea | iniVal | resVal     |
-            | ha       | dm2    | 1      | 1000000    |
-            | ha       | cm2    | 1      | 100000000 |
+            | fromArea | toArea | iniVal | resVal    |
+            | (ha)     | (dm²)  | 2      | 2000000   |
+            | (ha)     | (cm²)  | 9      | 900000000 |
 
     @volumeTest
     Scenario Outline: Verify the volume model works
@@ -32,6 +32,6 @@ Feature: Test the Dimension feature
       Then The initial value should be "<iniVal>"
           And The concert value should "<resVal>"
       Examples:
-        | fromVol      | toVol       | iniVal | resVal    |
-        | gal          | mL          | 1      | 3785.4118 |
-        | gal          | bl imp      | 1      | 0.02313   |
+        | fromVol               | toVol     | iniVal | resVal      |
+        | Gallon U.S. liquid    | (mL)      | 145    | 548884.7087 |
+        | Gallon U.S. liquid    | (bl imp)  | 785    | 18.1569     |

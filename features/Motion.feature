@@ -1,6 +1,6 @@
 @MotionFeature
 Feature: Test the Motion feature
-  This test should verify the functionality of Mottion module
+  This test should verify the functionality of the Motion module
 
   @SpeedTest
     Scenario Outline: Verify the speed page works
@@ -9,5 +9,5 @@ Feature: Test the Motion feature
       Then The speed initial value should be "<iniVal>"
         And The speed concert value should be "<resVal>"
           Examples:
-        | fromSpeed  | toSpeed | iniVal | resVal   |
-        | mph        | km/min  | 1      | 0.02682  |
+        | fromSpeed | toSpeed   | iniVal  | resVal |
+        | (mph)     | (km/min)  | 21      | 0.5633 |

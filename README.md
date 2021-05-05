@@ -1,10 +1,10 @@
-Test for Movil App 
+Test for Mobile App
 
 *  Android Version: 11.0
 *  APP: Unit Converter
 *  Page Object Model
 
-Requerimets 
+Requirements 
 
 Package              Version
 -------------------- -------
