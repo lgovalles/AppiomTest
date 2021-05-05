@@ -1,3 +1,5 @@
+import time
+
 from selenium.webdriver.common.by import By
 
 from pageobjects.Base_Page import BasePage
@@ -20,7 +22,7 @@ class mainMenu(BasePage):
     def ClickOnArea(self):
         self.find_element(*self.AREA_OPTION).click()
 
-    def ClickOnLenth(self):
+    def ClickOnLength(self):
         self.find_element(*self.LENGTH_OPTION).click()
 
     def ClickOnVolume(self):
@@ -30,5 +32,18 @@ class mainMenu(BasePage):
         self.find_element(*self.SPEED_OPTION).click()
 
     def ClickOnMenuOption(self, option):
-        self.MENU_OPTION = (By.XPATH, f"//android.widget.TextView(@text, '{option}')]")
-        self.find_element(*self.MENU_OPTION).click()
+        time.sleep(2)
+        self.scrollUp()
+        self.MENU_OPTION = (By.XPATH, f"(//android.widget.TextView[@text='{option}'])")
+        findlement  = True
+        while findlement:
+            try:
+                self.find_element(*self.MENU_OPTION).click()
+                findlement = False
+            except:
+                self.scrollDown()
+
+
+
+
+

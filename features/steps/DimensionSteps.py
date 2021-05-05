@@ -8,11 +8,11 @@ from pageobjects.DimensionPage import DimenstionPage
 
 mainpage = DimenstionPage()
 
-@given(u'I am on the Length page')
-def step_impl(context):
+@given(u'I am on the "{menuOption}" page')
+def step_impl(context,menuOption):
     print("given")
     mainpage.ClickOnMainMenu()
-    mainpage.ClickOnLenth()
+    mainpage.ClickOnMenuOption(menuOption)
 
 
 @when(u'I select the Length "{fromLength}" to convert "{toLength}"')
@@ -28,7 +28,7 @@ def step_impl(context, fromLength, toLength):
 def step_impl(context):
     print("given")
     mainpage.ClickOnMainMenu()
-    mainpage.ClickOnArea()
+    mainpage.ClickOnMenuOption("Area")
 
 
 @when(u'I select the Area "{fromArea}" to convert "{toArea}"')
@@ -44,7 +44,7 @@ def step_impl(context, fromArea, toArea):
 def step_impl(context):
     print("given")
     mainpage.ClickOnMainMenu()
-    mainpage.ClickOnVolume()
+    mainpage.ClickOnMenuOption("Volume")
 
 
 @when(u'I select the volume "{fromVol}" to convert "{toVol}"')
@@ -71,11 +71,10 @@ def step_impl(context, resVal):
     assert resVal in mainpage.get_valueTo()
 
 
-@given("I am on the speed page")
+@given("I am on the Speed page")
 def step_impl(context):
     mainpage.ClickOnMainMenu()
-    mainpage.scrollDown()
-    mainpage.ClickOnSpeet()
+    mainpage.ClickOnMenuOption("Speed")
 
 
 @when(u'I select the sped "{fromSpeed}" to convert "{toSpeed}"')
